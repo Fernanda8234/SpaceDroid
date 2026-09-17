@@ -37,8 +37,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             SpaceDroidTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ComponentsScreen( modifier = Modifier.padding(innerPadding))
-//                    GameOver(modifier = Modifier.padding(innerPadding))
+//                    ComponentsScreen( modifier = Modifier.padding(innerPadding))
+                    GameOver(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -54,13 +54,12 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
     ){
         Row(
             verticalAlignment = Alignment.CenterVertically, // alinhamento vertical
-            horizontalArrangement = Arrangement.SpaceEvenly // espaçamento horizontal
         ) {
             Text(
                 text = "SCORE: 5000",
                 color = Color(0xFFFFFFFF),
-                fontSize = 13.sp,
-                fontWeight = FontWeight.W700,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.W500,
                 fontFamily = Nes
             )
 
@@ -69,8 +68,8 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
             Text(
                 text = "LIVES:",
                 color = Color(0xFFFFFFFF),
-                fontSize = 13.sp,
-                fontWeight = FontWeight.W700,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.W500,
                 fontFamily = Nes
             )
 
@@ -79,32 +78,23 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
             }
 
         }
+
+        val alienColors = listOf(
+            Color.Green, Color.Red, Color.Blue, Color.Yellow, Color.Green
+        )
+
         Row(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .height(430.dp)
         ) {
 
-            Droid(
-                color = Color.Green,
-                modifier = Modifier.size(75.dp)
-            )
-            Droid(
-                color = Color.Red,
-                modifier = Modifier.size(75.dp)
-            )
-            Droid(
-                color = Color.Blue,
-                modifier = Modifier.size(75.dp)
-            )
-            Droid(
-                color = Color.Yellow,
-                modifier = Modifier.size(75.dp)
-            )
-            Droid(
-                color = Color.Green,
-                modifier = Modifier.size(75.dp)
-            )
+            alienColors.forEach { alienColors ->
+                Alien(
+                    modifier = Modifier.size(75.dp),
+                    color = alienColors
+                )
+            }
         }
 
         Nave(
@@ -125,7 +115,7 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
                     text = "PRESS START",
                     color = Color(0xFFFFFFFF),
                     fontSize = 20.sp,
-                    fontWeight = FontWeight.W700,
+                    fontWeight = FontWeight.W500,
                     fontFamily = Nes
                 )
             }
@@ -144,26 +134,16 @@ fun GameOver(modifier: Modifier = Modifier){
         Row(verticalAlignment = Alignment.CenterVertically, // alinhamento vertical
             horizontalArrangement = Arrangement.SpaceEvenly // espaçamento horizontal
         ) {
-            Droid(
-                color = Color.Green,
-                modifier = Modifier.size(75.dp)
+            val alienColors = listOf(
+                Color.Green, Color.Red, Color.Blue, Color.Yellow
             )
-            Droid(
-                color = Color.Red,
-                modifier = Modifier.size(75.dp)
-            )
-            Droid(
-                color = Color.Blue,
-                modifier = Modifier.size(75.dp)
-            )
-            Droid(
-                color = Color.Yellow,
-                modifier = Modifier.size(75.dp)
-            )
-            Droid(
-                color = Color.Green,
-                modifier = Modifier.size(75.dp)
-            )
+
+            alienColors.forEach { alienColors ->
+                Alien(
+                    modifier = Modifier.size(75.dp),
+                    color = alienColors
+                )
+            }
         }
 
         Text(
@@ -177,7 +157,7 @@ fun GameOver(modifier: Modifier = Modifier){
 }
 
 @Composable
-fun Droid(color: Color, modifier: Modifier = Modifier){
+fun Alien(color: Color, modifier: Modifier = Modifier){
     Image(
         modifier = modifier.padding(8.dp),
         painter = painterResource(R.drawable.alien),
