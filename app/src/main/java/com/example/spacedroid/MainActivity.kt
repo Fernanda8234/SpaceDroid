@@ -27,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.spacedroid.ui.theme.Nes
 import com.example.spacedroid.ui.theme.SpaceDroidTheme
 
 class MainActivity : ComponentActivity() {
@@ -58,17 +59,19 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
             Text(
                 text = "SCORE: 5000",
                 color = Color(0xFFFFFFFF),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.W700
+                fontSize = 13.sp,
+                fontWeight = FontWeight.W700,
+                fontFamily = Nes
             )
 
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
-                text = "Lives:",
+                text = "LIVES:",
                 color = Color(0xFFFFFFFF),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.W700
+                fontSize = 13.sp,
+                fontWeight = FontWeight.W700,
+                fontFamily = Nes
             )
 
             repeat(3){
@@ -113,7 +116,7 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.Gray)
+                    .background(Color(0xFF3F3F3F))
                     .height(50.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -121,8 +124,9 @@ fun ComponentsScreen(modifier: Modifier = Modifier) {
                 Text(
                     text = "PRESS START",
                     color = Color(0xFFFFFFFF),
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.W700
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.W700,
+                    fontFamily = Nes
                 )
             }
 
@@ -165,8 +169,9 @@ fun GameOver(modifier: Modifier = Modifier){
         Text(
             text = "GAME OVER",
             color = Color(0xFFFFFFFF),
-            fontSize = 70.sp,
-            fontWeight = FontWeight.W700
+            fontSize = 45.sp,
+            fontWeight = FontWeight.W700,
+            fontFamily = Nes
         )
     }
 }
